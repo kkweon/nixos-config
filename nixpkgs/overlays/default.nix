@@ -21,6 +21,9 @@ self: super:
       self.neovim
       self.python
       (self.python3.withPackages (ps: with ps; [ websocket_client sexpdata neovim ]))
+
+      self.gitAndTools.hub
+
       self.google-chrome
       self.nodejs
       self.yarn
