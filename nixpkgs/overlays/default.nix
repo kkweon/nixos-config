@@ -33,6 +33,9 @@ self: super:
       self.nodejs
       self.yarn
 
+      # Exercism
+      self.exercism
+
       # rust
       self.rustup
 
