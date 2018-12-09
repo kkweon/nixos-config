@@ -128,7 +128,7 @@
       haskellPackages.xmonad-contrib
     ];
   };
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
 
   virtualisation.docker.enable = true;
 
