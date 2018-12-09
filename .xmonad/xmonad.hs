@@ -3,7 +3,15 @@ import Graphics.X11.ExtraTypes.XF86
 import XMonad
 import XMonad.Actions.Volume
 import XMonad.Config.Desktop (desktopConfig)
-import XMonad.Hooks.DynamicLog (dzen)
+import XMonad.Hooks.DynamicLog
+  ( dynamicLogWithPP
+  , dzen
+  , ppOutput
+  , ppTitle
+  , xmobarPP
+  , xmobarColor
+  , shorten
+  )
 import XMonad.Hooks.ManageDocks
   ( avoidStruts
   , docks
@@ -12,10 +20,21 @@ import XMonad.Hooks.ManageDocks
   )
 import XMonad.Util.Dzen ((>=>), addArgs, center, dzenConfig, font, onCurr)
 import XMonad.Util.EZConfig (additionalKeys)
-import XMonad.Util.Run (spawnPipe)
+import XMonad.Util.Run (hPutStrLn, spawnPipe)
 
 main :: IO ()
-main = xmonad =<< dzen myConfig
+main = do
+  xmproc <- spawnPipe "xmobar"
+  config <- dzen myConfig
+  xmonad
+    config
+      { logHook =
+          dynamicLogWithPP
+            xmobarPP
+              { ppOutput = hPutStrLn xmproc
+              , ppTitle = xmobarColor "green" "" . shorten 100
+              }
+      }
 
 alert :: (Show a) => a -> X ()
 alert = dzenConfig centered . show
