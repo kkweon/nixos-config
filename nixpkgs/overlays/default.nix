@@ -17,20 +17,24 @@ self: super:
       self.fd
       self.ripgrep
       self.stow
+      self.google-chrome
       self.tree
       self.neovim
+      self.gitAndTools.hub
+      self.gnupg
+      self.dzen2
+      self.slack
+
+      # Python
       self.python
       (self.python3.withPackages (ps: with ps; [ websocket_client sexpdata neovim ]))
 
-      self.gitAndTools.hub
-
-      self.google-chrome
+      # JS
       self.nodejs
       self.yarn
-      self.gnupg
 
-      self.dzen2
-      self.slack
+      # rust
+      self.rustup
 
       # haskell
       self.sh2md
@@ -43,15 +47,19 @@ self: super:
       self.haskellPackages.xmonad-extras
       self.haskellPackages.xmonad-contrib
       self.haskellPackages.xmobar
-      # java
+
+      # Java
       self.jdk
+      # Scala
       self.sbt
+
+      # Go
       self.go
+
+      # C/C++
       self.gnumake
       self.gcc
       self.cmake
-      self.rustc
-      self.cargo
     ];
   };
 }
