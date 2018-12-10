@@ -57,4 +57,5 @@ myConfig =
   [ ((0, xF86XK_AudioLowerVolume), lowerVolume 10 >>= alertDecimal)
   , ((0, xF86XK_AudioRaiseVolume), raiseVolume 10 >>= alertDecimal)
   , ((0, xF86XK_AudioMute), toggleMute >>= alert)
+  , ((mod1Mask .|. controlMask, xK_l), spawn "slock") -- CTRL + ALT + L --> slock
   ]
