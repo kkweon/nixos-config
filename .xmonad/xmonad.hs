@@ -25,9 +25,8 @@ import XMonad.Util.Run (hPutStrLn, spawnPipe)
 main :: IO ()
 main = do
   xmproc <- spawnPipe "xmobar"
-  config <- dzen myConfig
   xmonad
-    config
+    myConfig
       { logHook =
           dynamicLogWithPP
             xmobarPP
