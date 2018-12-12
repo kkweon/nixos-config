@@ -17,13 +17,15 @@ self: super:
       self.fd
       self.ripgrep
       self.stow
-      self.google-chrome
       self.tree
       self.neovim
       self.gitAndTools.hub
       self.gnupg
       self.dzen2
       self.slack
+			self.unzip
+
+      self.firefox
 
       # Python
       self.python
