@@ -71,6 +71,11 @@
     dmenu
     blueman
     binutils-unwrapped
+
+    # common packages for Rust/LLVM/...
+    pkgconfig
+    # for network programming
+    openssl
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
