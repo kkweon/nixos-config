@@ -44,6 +44,7 @@ self: super:
           setuptools
         ])
       )
+      self.httpie
 
       # JS
       self.nodejs
