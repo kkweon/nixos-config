@@ -29,7 +29,21 @@ self: super:
 
       # Python
       self.python
-      (self.python3.withPackages (ps: with ps; [ websocket_client sexpdata neovim ]))
+      (self.python3.withPackages
+        (ps: with ps;
+        [
+          websocket_client
+          sexpdata
+          neovim
+          black
+          pytest
+          pylint
+          yapf
+          tox
+          pip
+          setuptools
+        ])
+      )
 
       # JS
       self.nodejs
