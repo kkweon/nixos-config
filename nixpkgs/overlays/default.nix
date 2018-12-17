@@ -26,6 +26,7 @@ self: super:
 			self.unzip
 
       self.firefox
+      self.heroku
 
       # Python
       self.python
