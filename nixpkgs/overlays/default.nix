@@ -13,6 +13,9 @@ self: super:
   myPackages = super.buildEnv {
     name = "my-packages";
     paths = [
+      # libs
+      self.zlib
+
       self.xclip
       self.fd
       self.ripgrep
