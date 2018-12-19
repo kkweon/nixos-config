@@ -76,6 +76,7 @@ self: super:
       self.jdk
       # Scala
       self.sbt
+      self.scalafmt
 
       # Go
       self.go
