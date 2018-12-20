@@ -14,7 +14,7 @@ self: super:
     name = "my-packages";
     paths = [
       # libs
-      self.zlib
+      self.zlib.dev
 
       self.xclip
       self.fd
