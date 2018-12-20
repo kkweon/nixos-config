@@ -15,6 +15,7 @@ self: super:
     paths = [
       # libs
       self.zlib.dev
+      self.curl.dev
 
       self.xclip
       self.fd
