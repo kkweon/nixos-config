@@ -31,6 +31,7 @@ self: super:
 
       self.firefox
       self.heroku
+      self.travis
 
       # Python
       self.python
