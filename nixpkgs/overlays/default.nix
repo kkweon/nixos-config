@@ -82,6 +82,7 @@ self: super:
 
       # Go
       self.go
+      self.gotools
 
       # C/C++
       self.gnumake
