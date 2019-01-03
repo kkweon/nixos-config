@@ -16,6 +16,7 @@ self: super:
       # libs
       self.zlib.dev
       self.curl.dev
+      self.openssl.dev
 
       self.xclip
       self.fd
@@ -33,8 +34,16 @@ self: super:
       self.heroku
       self.travis
 
+      # screencapture
+      self.maim
+
       # Python
-      self.python
+      (self.python.withPackages
+        (ps: with ps;
+         [
+          setuptools
+         ])
+      )
       (self.python3.withPackages
         (ps: with ps;
         [
