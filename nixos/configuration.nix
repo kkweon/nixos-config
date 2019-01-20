@@ -106,6 +106,10 @@
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
 
+  # scanner
+  hardware.sane.enable = true;
+  hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
+
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio = {
