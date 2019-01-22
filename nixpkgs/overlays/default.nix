@@ -1,8 +1,8 @@
 self: super:
 {
   neovim = super.neovim.override {
-    extraPythonPackages = pkgs: with pkgs; [ websocket_client sexpdata neovim ];
-    extraPython3Packages = pkgs: with pkgs; [ websocket_client sexpdata neovim ];
+    extraPythonPackages = pkgs: with pkgs; [ websocket_client sexpdata ];
+    extraPython3Packages = pkgs: with pkgs; [ websocket_client sexpdata ];
     configure = {
       customRC = builtins.readFile(~/.vim/vimrc);
     };
@@ -26,9 +26,11 @@ self: super:
       self.neovim
       self.gitAndTools.hub
       self.gnupg
-      self.dzen2
-      self.slack
 			self.unzip
+
+      # messenger
+      self.slack
+      self.discord
 
       self.firefox
       self.heroku
@@ -49,7 +51,6 @@ self: super:
         [
           websocket_client
           sexpdata
-          neovim
           black
           pytest
           pylint
@@ -78,6 +79,9 @@ self: super:
       self.haskellPackages.hindent
       self.haskellPackages.stylish-haskell
       self.haskellPackages.hoogle
+
+      # xmonad
+      self.dzen2
       self.haskellPackages.xmonad
       self.haskellPackages.xmonad-extras
       self.haskellPackages.xmonad-contrib
