@@ -58,6 +58,7 @@ self: super:
           tox
           pip
           setuptools
+          ipython
         ])
       )
       self.httpie
@@ -101,6 +102,7 @@ self: super:
       self.gnumake
       self.gcc
       self.cmake
+      self.clang-tools
     ];
   };
 }
