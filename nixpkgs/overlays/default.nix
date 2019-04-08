@@ -19,6 +19,7 @@ self: super:
       self.openssl.dev
 
       self.xclip
+      self.xsel
       self.fd
       self.ripgrep
       self.stow
@@ -27,6 +28,7 @@ self: super:
       self.gitAndTools.hub
       self.gnupg
 			self.unzip
+      self.anki
 
       # messenger
       self.slack
