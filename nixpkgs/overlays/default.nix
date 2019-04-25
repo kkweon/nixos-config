@@ -61,6 +61,7 @@ self: super:
           pip
           setuptools
           ipython
+          hypothesis
         ])
       )
       self.httpie
