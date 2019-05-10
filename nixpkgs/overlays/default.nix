@@ -29,6 +29,7 @@ self: super:
       self.gnupg
 			self.unzip
       self.anki
+      self.calibre
 
       # messenger
       self.slack
