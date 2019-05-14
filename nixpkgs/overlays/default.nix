@@ -31,6 +31,8 @@ self: super:
       self.anki
       self.calibre
 
+      self.protobuf
+
       # messenger
       self.slack
       self.discord
