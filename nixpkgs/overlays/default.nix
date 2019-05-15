@@ -30,7 +30,7 @@ self: super:
 			self.unzip
       self.anki
       self.calibre
-
+      self.gimp
       self.protobuf
 
       # messenger
