@@ -65,12 +65,14 @@ self: super:
           setuptools
           ipython
           hypothesis
+          protobuf
+          pynvim
         ])
       )
       self.httpie
 
       # JS
-      self.nodejs
+      self.nodejs-10_x
       self.yarn
 
       # Exercism
