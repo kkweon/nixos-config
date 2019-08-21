@@ -1,0 +1,1 @@
+xrandr --output DP-4 --primary --mode 3840x2160 --scale 0.8x0.8 --output HDMI-0 --right-of DP-4
