@@ -67,6 +67,7 @@ self: super:
           hypothesis
           protobuf
           pynvim
+          tkinter
         ])
       )
       self.httpie
