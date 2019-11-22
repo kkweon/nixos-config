@@ -98,7 +98,9 @@ self: super:
       self.haskellPackages.xmobar
 
       # Java
-      self.jdk
+      self.jdk11
+      self.gradle
+
       # Scala
       self.sbt
       self.scalafmt
@@ -112,6 +114,10 @@ self: super:
       self.gcc
       self.cmake
       self.clang-tools
+
+
+      # IDE
+      self.jetbrains.idea-ultimate
     ];
   };
 }
