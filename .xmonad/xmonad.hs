@@ -8,9 +8,9 @@ import XMonad.Hooks.DynamicLog
   , dzen
   , ppOutput
   , ppTitle
-  , xmobarPP
-  , xmobarColor
   , shorten
+  , xmobarColor
+  , xmobarPP
   )
 import XMonad.Hooks.ManageDocks
   ( avoidStruts
@@ -18,6 +18,7 @@ import XMonad.Hooks.ManageDocks
   , docksEventHook
   , manageDocks
   )
+import XMonad.Hooks.SetWMName
 import XMonad.Util.Dzen ((>=>), addArgs, center, dzenConfig, font, onCurr)
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.Run (hPutStrLn, spawnPipe)
@@ -51,11 +52,14 @@ myConfig =
     { terminal = "alacritty"
     , handleEventHook = docksEventHook <+> handleEventHook desktopConfig
     , manageHook = manageDocks <+> manageHook desktopConfig
+    -- Java swing application doesn't play well without renaming WM to "LG3D."
+    , startupHook = setWMName "LG3D"
     , layoutHook = avoidStruts $ layoutHook desktopConfig
     } `additionalKeys`
   [ ((0, xF86XK_AudioLowerVolume), lowerVolume 10 >>= alertDecimal)
   , ((0, xF86XK_AudioRaiseVolume), raiseVolume 10 >>= alertDecimal)
   , ((0, xF86XK_AudioMute), toggleMute >>= alert)
-  , ((controlMask .|. shiftMask, xK_4), spawn "maim -s | xclip -selection clipboard -t image/png")
+  , ( (controlMask .|. shiftMask, xK_4)
+    , spawn "maim -s | xclip -selection clipboard -t image/png")
   , ((mod1Mask .|. controlMask, xK_l), spawn "slock") -- CTRL + ALT + L --> slock
   ]
