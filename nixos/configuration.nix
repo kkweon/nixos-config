@@ -83,7 +83,7 @@
   # programs.mtr.enable = true;
   programs.slock.enable = true;
   programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
-  programs.fish.enable = true;
+  programs.zsh.enable = true;
   programs.bash.shellAliases = {
     ll = "ls -alh";
     ls = "ls --color=tty";
@@ -156,7 +156,7 @@
     extraGroups = [ "wheel" "networkmanager" "docker" ];
     uid = 1000;
     home = "/home/kkweon";
-    shell = "/run/current-system/sw/bin/fish";
+    shell = "/run/current-system/sw/bin/zsh";
   };
 
   nix.trustedUsers = [ "root" "@wheel" ];
