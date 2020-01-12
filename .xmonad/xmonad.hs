@@ -3,6 +3,7 @@ import Graphics.X11.ExtraTypes.XF86
 import XMonad
 import XMonad.Actions.Volume
 import XMonad.Config.Desktop (desktopConfig)
+import XMonad.Config.Prime (X)
 import XMonad.Hooks.DynamicLog
   ( dynamicLogWithPP
   , dzen
@@ -22,6 +23,7 @@ import XMonad.Hooks.SetWMName
 import XMonad.Util.Dzen ((>=>), addArgs, center, dzenConfig, font, onCurr)
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.Run (hPutStrLn, spawnPipe)
+import XMonad.Util.SpawnOnce (spawnOnce)
 
 main :: IO ()
 main = do
@@ -53,7 +55,7 @@ myConfig =
     , handleEventHook = docksEventHook <+> handleEventHook desktopConfig
     , manageHook = manageDocks <+> manageHook desktopConfig
     -- Java swing application doesn't play well without renaming WM to "LG3D."
-    , startupHook = setWMName "LG3D"
+    , startupHook = setWMName "LG3D" <+> settingXrandrHook
     , layoutHook = avoidStruts $ layoutHook desktopConfig
     } `additionalKeys`
   [ ((0, xF86XK_AudioLowerVolume), lowerVolume 10 >>= alertDecimal)
@@ -63,3 +65,11 @@ myConfig =
     , spawn "maim -s | xclip -selection clipboard -t image/png")
   , ((mod1Mask .|. controlMask, xK_l), spawn "slock") -- CTRL + ALT + L --> slock
   ]
+  where
+    -- This is a setting for the desktop
+    -- Left monitor is 30 inch (DP-2)
+    -- Right monitor is a back up 21 inch monitor (HDMI-0)
+    settingXrandrHook :: X ()
+    settingXrandrHook =
+      spawnOnce
+        "xrandr --output DP-2 --primary --output HDMI-0 --right-of DP-2 --mode 1920x1080"
