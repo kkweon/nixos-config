@@ -115,6 +115,9 @@ self: super:
       self.cmake
       self.clang-tools
 
+      # Kubernetes
+      self.minikube
+      self.kubernetes
 
       # IDE
       self.jetbrains.idea-ultimate
