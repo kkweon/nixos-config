@@ -84,11 +84,11 @@ self: super:
 
       # haskell
       self.sh2md
-      self.stack
-      self.haskellPackages.hlint
-      self.haskellPackages.hindent
-      self.haskellPackages.stylish-haskell
-      self.haskellPackages.hoogle
+      # self.stack
+      # self.haskellPackages.hlint
+      # self.haskellPackages.hindent
+      # self.haskellPackages.stylish-haskell
+      # self.haskellPackages.hoogle
 
       # xmonad
       self.dzen2
