@@ -22,6 +22,8 @@ self: super:
       self.xsel
       self.fd
       self.ripgrep
+      self.gitAndTools.gh
+      self.jq
       self.stow
       self.tree
       self.neovim
@@ -118,6 +120,7 @@ self: super:
       # Kubernetes
       self.minikube
       self.kubernetes
+      self.kubernetes-helm
 
       # IDE
       self.jetbrains.idea-ultimate
