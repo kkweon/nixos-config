@@ -1,0 +1,12 @@
+.xmonad/xmonad.o
+.xmonad/xmonad.hi
+.xmonad/xmonad.errors
+.xmonad/xmonad-x86_64-linux
+.xmonad/xmonad-git/
+.xmonad/xmonad-extras-git/
+.xmonad/xmonad-contrib-git/
+.xmonad/xmonad
+.xmonad/xmobar-git/
+.xmonad/build
+.xmonad/bin/
+.xmonad/.stack-work/

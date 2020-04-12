@@ -27,7 +27,7 @@ import XMonad.Util.SpawnOnce (spawnOnce)
 
 main :: IO ()
 main = do
-  xmproc <- spawnPipe "xmobar"
+  xmproc <- spawnPipe "~/.local/bin/xmobar"
   xmonad
     myConfig
       { logHook =
@@ -72,4 +72,4 @@ myConfig =
     settingXrandrHook :: X ()
     settingXrandrHook =
       spawnOnce
-        "xrandr --output DP-2 --primary --output HDMI-0 --right-of DP-2 --mode 1920x1080"
+        "xrandr --output DP-2 --primary --mode 2560x1440 --output HDMI-1 --right-of DP-2 --mode 1920x1080"
