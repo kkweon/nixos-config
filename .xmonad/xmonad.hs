@@ -27,7 +27,7 @@ import XMonad.Util.SpawnOnce (spawnOnce)
 
 main :: IO ()
 main = do
-  xmproc <- spawnPipe "~/.local/bin/xmobar"
+  xmproc <- spawnPipe "xmobar"
   xmonad
     myConfig
       { logHook =
@@ -49,9 +49,14 @@ centered =
   font "-*-arial-*-r-*-*-64-*-*-*-*-*-*-*" >=>
   addArgs ["-fg", "#80c0ff"] >=> addArgs ["-bg", "#000040"]
 
+
+-- mod4Mask is the Win key.
+myModMask = mod4Mask
+
 myConfig =
   def
     { terminal = "alacritty"
+    , modMask = myModMask
     , handleEventHook = docksEventHook <+> handleEventHook desktopConfig
     , manageHook = manageDocks <+> manageHook desktopConfig
     -- Java swing application doesn't play well without renaming WM to "LG3D."
@@ -60,10 +65,10 @@ myConfig =
     } `additionalKeys`
   [ ((0, xF86XK_AudioLowerVolume), lowerVolume 10 >>= alertDecimal)
   , ((0, xF86XK_AudioRaiseVolume), raiseVolume 10 >>= alertDecimal)
-  , ((0, xF86XK_AudioMute), toggleMute >>= alert)
+  , ((0, xF86XK_AudioMute), fmap muteStatusToText toggleMute >>= alert)
   , ( (controlMask .|. shiftMask, xK_4)
     , spawn "maim -s | xclip -selection clipboard -t image/png")
-  , ((mod1Mask .|. controlMask, xK_l), spawn "slock") -- CTRL + ALT + L --> slock
+  , ((myModMask .|. controlMask, xK_l), spawn "slock") -- CTRL + ALT + L --> slock
   ]
   where
     -- This is a setting for the desktop
@@ -72,4 +77,8 @@ myConfig =
     settingXrandrHook :: X ()
     settingXrandrHook =
       spawnOnce
-        "xrandr --output DP-2 --primary --mode 2560x1440 --output HDMI-1 --right-of DP-2 --mode 1920x1080"
+        "xrandr --output DP-2 --primary --mode 2560x1440 --pos 0x142 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 2560x0 --rotate normal"
+
+    muteStatusToText :: Bool -> String
+    muteStatusToText True = "On"
+    muteStatusToText _ = "Off"
